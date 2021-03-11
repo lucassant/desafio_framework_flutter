@@ -3,9 +3,8 @@ import 'package:desafio_flutter/db/database.dart';
 import 'package:dio/dio.dart';
 
 class PostsApiService {
-  String baseUrl = API_URL + 'posts';
-
   Future<List<Post>> getPosts() async {
+    String baseUrl = API_URL + 'posts';
     try {
       Response response = await Dio().get(baseUrl);
 

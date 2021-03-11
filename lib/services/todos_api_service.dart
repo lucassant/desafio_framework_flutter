@@ -4,9 +4,8 @@ import 'package:desafio_flutter/db/database.dart';
 import 'package:dio/dio.dart';
 
 class TodosApiService {
-  String baseUrl = API_URL + 'todos';
-
   Future<List<Todo>> getTodos() async {
+    String baseUrl = API_URL + 'todos';
     try {
       Response response = await Dio().get(baseUrl);
 
