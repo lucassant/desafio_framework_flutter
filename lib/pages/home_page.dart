@@ -13,11 +13,24 @@ import 'package:desafio_flutter/services/posts_api_service.dart';
 import 'package:desafio_flutter/services/todos_api_service.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  Future<bool> _funcaoFetch;
+
+  @override
+  void initState() {
+    super.initState();
+    _funcaoFetch = _fetchAllData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Object>(
-        future: _fetchAllData(),
+        future: _funcaoFetch,
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Scaffold(
